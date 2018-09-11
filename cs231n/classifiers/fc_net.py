@@ -276,10 +276,10 @@ class FullyConnectedNet(object):
 
             if self.use_dropout:
                 if self.dropout_param['mode'] == 'train':
-                    scores, cache = dropout_forward(scores, self.dropout_param['p'])
+                    scores, cache = dropout_forward(scores, self.dropout_param)
                     drop_cache.append(cache)
                 else:
-                    scores, _ = dropout_forward(scores, self.dropout_param['p'])
+                    scores, _ = dropout_forward(scores, self.dropout_param)
         
         scores, cache = affine_forward(scores, self.params['W'+str(self.num_layers)],
                                                self.params['b'+str(self.num_layers)])
